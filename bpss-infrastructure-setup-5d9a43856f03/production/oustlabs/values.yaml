@@ -1,0 +1,65 @@
+instances:
+  - ec2: redis
+    ami: ami-0092de42bc31bf071
+    instance_type: t3.medium
+    inbound_ports:
+      - 80
+    volume_size: 20
+    enable_eip: false
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+  - ec2: es-curator
+    ami: ami-080385d50997789ff
+    instance_type: t3.medium
+    inbound_ports:
+      - 80
+    volume_size: 15
+    enable_eip: false
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+  - ec2: db-migration
+    ami: ami-00838d8bdb9d75210
+    instance_type: t3.medium
+    inbound_ports:
+      - 80
+    volume_size: 50
+    enable_eip: false
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+  - ec2: jenkins-build
+    ami: ami-005e17cbd29ab45fc
+    instance_type: t3a.large
+    inbound_ports:
+      - 80
+    volume_size: 100
+    enable_eip: false
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+      - arn:aws:iam::aws:policy/AmazonS3FullAccess
+      - arn:aws:iam::aws:policy/AdministratorAccess-AWSElasticBeanstalk
+cloudfront:
+  - cdn: webapp
+    bucket: sg1-webapp.betterplace.tech
+    enabled: true
+    default_root_object: index.html
+    aliases:
+      - sg1-webapp.betterplace.tech
+    allowed_methods:
+      - GET
+      - HEAD
+      - OPTIONS
+      - PUT
+      - POST
+      - PATCH
+      - DELETE
+    cached_methods:
+      - GET
+      - HEAD
+      - OPTIONS
+    default_ttl: 3600
+    max_ttl: 86400
+    min_ttl: 0
+    viewer_protocol_policy: redirect-to-https
+    acm_certificate_arn: arn:aws:acm:us-east-1:443951760882:certificate/4fd853d2-778f-4907-b055-0a1e68ea1c58
+    cloudfront_default_certificate: false
+    restriction_type: none

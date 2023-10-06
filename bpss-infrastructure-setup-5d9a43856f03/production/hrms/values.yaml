@@ -1,0 +1,66 @@
+- ec2: b2b-nexus
+  ami: ami-0294e8aebbed5c1f1
+  instance_type: t3.medium
+  inbound_ports:
+    - 80
+  volume_size: 50
+  enable_eip: false
+  policy_arn:
+    - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+- ec2: hevo
+  ami: ami-0468930c44a4878b0
+  instance_type: t3.medium
+  inbound_ports:
+    - 80
+  volume_size: 50
+  enable_eip: false
+  policy_arn:
+    - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+- ec2: securitas-integration-server
+  ami: ami-0c79a3ecea78f6a02
+  instance_type: t3.medium
+  inbound_ports:
+    - 80
+  volume_size: 50
+  enable_eip: false
+  policy_arn:
+    - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+- ec2: b2b-monitoring
+  ami: ami-0702d8be3b62d33c9
+  instance_type: t3.medium
+  inbound_ports:
+    - 80
+  volume_size: 130
+  enable_eip: false
+  policy_arn:
+    - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+#- ec2: hiredesigner
+#  ami: ami-0ece6cc5ea43d5d5c
+#  instance_type: t3.medium
+#  inbound_ports: [22]
+#  volume_size: 50
+#  enable_eip: false
+#- ec2: hire-app
+#  ami: ami-08ea18a7b4e9b771f
+#  instance_type: t3.medium
+#  inbound_ports: [22]
+#  volume_size: 50
+#  enable_eip: false
+#- ec2: b2b-bastion
+#  ami: ami-0c054989495f400f8
+#  instance_type: t3.medium
+#  inbound_ports: [22]
+#  volume_size: 75
+#  enable_eip: false
+#- ec2: hireprocess
+#  ami: ami-04d1513c0c3edf642
+#  instance_type: t3.medium
+#  inbound_ports: [22]
+#  volume_size: 50
+#  enable_eip: false
+#- ec2: b2b-jenkins
+#  ami: ami-0e310d617b879570c
+#  instance_type: t3.medium
+#  inbound_ports: [22]
+#  volume_size: 100
+#  enable_eip: false

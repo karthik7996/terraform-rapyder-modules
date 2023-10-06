@@ -1,0 +1,51 @@
+cloudfront:
+  - cdn: platform
+    bucket: de1-platform.betterplace.tech
+    enabled: true
+    default_root_object: index.html
+    aliases:
+      - de1-platform.betterplace.tech
+    allowed_methods:
+      - GET
+      - HEAD
+      - OPTIONS
+      - PUT
+      - POST
+      - PATCH
+      - DELETE
+    cached_methods:
+      - GET
+      - HEAD
+      - OPTIONS
+    default_ttl: 3600
+    max_ttl: 86400
+    min_ttl: 0
+    viewer_protocol_policy: redirect-to-https
+    acm_certificate_arn: arn:aws:acm:us-east-1:443951760882:certificate/4fd853d2-778f-4907-b055-0a1e68ea1c58
+    cloudfront_default_certificate: false
+    restriction_type: none
+  - cdn: accounts
+    bucket: de1-accounts.betterplace.tech
+    enabled: true
+    default_root_object: index.html
+    aliases:
+      - de1-accounts.betterplace.tech
+    allowed_methods:
+      - GET
+      - HEAD
+      - OPTIONS
+      - PUT
+      - POST
+      - PATCH
+      - DELETE
+    cached_methods:
+      - GET
+      - HEAD
+      - OPTIONS
+    default_ttl: 3600
+    max_ttl: 86400
+    min_ttl: 0
+    viewer_protocol_policy: redirect-to-https
+    acm_certificate_arn: arn:aws:acm:us-east-1:443951760882:certificate/4fd853d2-778f-4907-b055-0a1e68ea1c58
+    cloudfront_default_certificate: false
+    restriction_type: none

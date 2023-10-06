@@ -1,0 +1,44 @@
+instances:
+  - ec2: wg-vpn
+    ami: ami-04e601abe3e1a910f
+    instance_type: t3.medium
+    cidr_blocks:
+      - "0.0.0.0/0"
+    protocol: udp
+    inbound_ports:
+      - 51820
+    volume_size: 30
+    enable_eip: true
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+    user_data: |-
+      #!/bin/bash
+      apt update
+      apt install -y docker.io && apt install -y docker-compose
+      usermod -aG docker ubuntu
+  - ec2: bastion
+    ami: ami-04e601abe3e1a910f
+    instance_type: t3a.micro
+    cidr_blocks:
+      - "10.21.0.0/16"
+    protocol: tcp
+    inbound_ports:
+      - 22
+    volume_size: 30
+    enable_eip: true
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+    user_data: null
+  - ec2: jenkins-server
+    ami: ami-09ad950e67691715e
+    instance_type: t3.medium
+    cidr_blocks:
+      - "10.21.0.0/16"
+    protocol: tcp
+    inbound_ports:
+      - 80
+    volume_size: 100
+    enable_eip: false
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+    user_data: null

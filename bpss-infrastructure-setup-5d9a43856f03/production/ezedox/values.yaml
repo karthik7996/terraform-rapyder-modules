@@ -1,0 +1,11 @@
+instances:
+  - ec2: hireapp
+    ami: ami-0c7b4b63ce6ea7083
+    instance_type: t3a.medium
+    enable_eip: false
+    volume_size: 20
+    policy_arn:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+    inbound_ports:
+      - 80
+      - 443
